@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Processamento de Imagens</title>
+</head>
+
+<body>
+    <main>
+        <!-- Canvas para manipular os atributos das imagens -->
+        <canvas id="window" style="display: none;"></canvas>
+
+        <!-- Menu de opcoes -->
+        <section class="section-options">
+
+            <!-- Input para imagens -->
+            <div class="div-input-image">
+                <label for="uploadImg" class="buttonStyle">Selecionar Imagem</label>
+                <input type="file" name="uploadImg" id="uploadImg" class="uploadInput" accept="image/*">
+            </div>
+
+            <!-- Selecao dos algoritmos -->
+            <div id="div-algoritmos-options">
+                <label for="algoritmos-PID">Selecione um Algoritmo</label>
+                <select name="algoritmos-PID" id="algoritmos-PID">
+                    <option value="#" selected disabled>Selecione uma opcao</option>
+                    <option value="Marr-Hildreth">Marr-Hildreth</option>
+                    <option value="Canny">Canny</option>
+                    <option value="Otsu">Otsu</option>
+                    <option value="Watershed">Watershed</option>
+                    <option value="Objetcs-Counter">Identificar Objetos</option>
+                    <option value="Freeman">Cadeia de Freeman</option>
+                    <option value="Filtro-Box">Filtro Box</option>
+                    <option value="Reclassify-Pixels-Values">Transformacao de Intensidade</option>
+                </select>
+                <button id="button-aplicar-algoritmo-PID" class="buttonStyle">Aplicar</button>
+            </div>
+
+            <!-- Opcoes para o algoritmo de contagem de objetos -->
+            <div id="div-objects-counter-options" style="display: none;">
+                <div id="div-is-binary-image">
+                    <h3>Indique se a Imagem já é Binária:</h3>
+                    
+                    <label for="binary-image">Sim:</label>
+                    <input type="radio" name="is-image-binary" id="binary-image" value="binary-image">
+
+                    <label for="not-binary-image" id="not-binary-image">Não:</label>
+                    <input type="radio" name="is-image-binary" id="not-binary-image" value="not-binary-image">
+                </div>
+
+                <div id="div-object-white-or-black">
+                    <h3>Executar Preenchimento de Buracos?</h3>
+    
+                    <label for="yes-fill-holes">Sim:</label>
+                    <input type="radio" name="fill-holes" id="yes-fill-holes" value="true">
+
+                    <label for="no-fill-holes" id="no-fill-holes">Não:</label>
+                    <input type="radio" name="fill-holes" id="no-fill-holes" value="false">
+                </div>
+            </div>
+
+            <!-- Opcoes para o algoritmo de contagem de objetos -->
+            <div id="div-box-filter-options" style="display: none;">
+                    <h3>Selecione o Kernel do Filtro:</h3>
+                    
+                    <select name="filtro-kernel-size" id="filtro-kernel-size">
+                        <option value="#" selected disabled>Kernel Size</option>
+                        <option value="2">2X2</option>
+                        <option value="3">3X3</option>
+                        <option value="5">5X5</option>
+                        <option value="7">7X7</option>
+                    </select>
+            </div>
+        </section>
+
+        <!-- Imagens Processadas -->
+        <section class="section-final-image" style="display: none;">
+            <div>
+                <img alt="Imagem Selecionada" id="imageTag" style="display: none;">
+                <img alt="Imagem Convertida para Grayscale" id="grayImageTag" style="display: none;">
+            </div>
+            <div>
+                <img alt="Imagem Binária" id="binaryImageTag" style="display: none;">
+                <img alt="Imagem Pós Processamento" id="operatedImageTag" style="display: none;">
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
